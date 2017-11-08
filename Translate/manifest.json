@@ -1,0 +1,19 @@
+{
+    "manifest version": 2,
+    "name": "page action demo",
+    "description": "adds a button in address bar and open pop on click",
+    "version": "1.0",
+    "icons":{
+        "64": ""
+    },
+
+    "background": {
+        "script": ["translate.js"]
+
+    },
+
+    "page_action": {
+        "default_icon": "",
+        "browser_style": true
+    }
+}
