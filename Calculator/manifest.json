@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+    "name": "Calculator",
+    "version": "1.0",
+    "description": "a calculator add-on",
+    "icons": {
+        "50": "icons/calculator.png"
+    },
+    "permissions": [
+        "clipboardWrite"
+    ],
+    "applications": {
+        "gecko": {
+            "id": "tiffanytoh2005@hotmail.com",
+            "strict_min_version": "48.0",
+            "strict_max_version": "54.0"
+        }
+    },
+    "browser_action": {
+        "default_icon": "",
+        "default_title": "Calculator",
+        "default_popup": "popup/calculator.html",
+        "browser_style": false
+    }
+}
