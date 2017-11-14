@@ -128,7 +128,57 @@ for (var i = 0; i < keys.length; i++) {
             decimalAdded = false;
         }
 
+        else if (operators.indexOf(button) > -1) {
+            var lastChar = inputVal[inputVal.length - 1];
+
+            if (inputVal != '' && operators.indexOf(lastChar) == -1)
+                input.textContent += button;
+
+            else if (inputVal == '' && button == '-')
+                input.textContent += button;
+
+            if (operators.indexOf(lastChar) > -1 && inputVal.length > 1) {
+                input.textContent = inputVal.replace(/.$/, button);
+            }
+
+            if (inputVal != '' && button == 'Xy') {
+                input.textContent = inputVal.replace(/Xy/, '');
+                var supTag = document.createElement('SUP');
+                var expNode = document.createTextNode('^');
+                supTag.setAttribute("id", "powerid");
+                input.appendChild(supTag);
+                supTag.appendChild(expNode);
+            }
+
+            if (inputVal.indexOf('^') > -1) {
+                input.textContent = inputVal.replace(/^$/, '');
+            }
+
+            if (inputVal.indexOf('/') > -1 && button == '%') {
+                input.textContent = inputVal.replace(/%/, '');
+            }
+
+            decimalAdded = false;
+        }
+
+        else if (inputVal == Number.POSITIVE_INFINITY || inputVal == Number.NEGATIVE_INFINITY) {
+            input.textContent = inputVal.replace(/Infinity/ig, '');
+        }
+        else if (inputVal === 'NaN') {
+            input.textContent = inputVal.replace(/NaN/ig, '');
+        }
+
+        else if (button == '.') {
+            if (!decimalAdded && inputVal != '') {
+                input.textContent += button;
+                decimalAdded = true;
+            }
+        }
+
+        else {
+            input.textContent += button;
+        }
+
+        e.preventDefault();
     }
-
 }
-
