@@ -44,7 +44,7 @@ function setCoordinate(position) {
                 load_info(request.responseText);
             }
         }
-        request.open('get', getFoursquareExploreEndpoint(this_latitude, this_longitude, section));
+        request.open('get', getEndPoint(this_latitude, this_longitude, section));
         request.send();
     }
 }
@@ -83,7 +83,7 @@ function load_info(json) {
             var rating = venue.rating;
 
             view +=
-                '<p><img src="icons/house16.png"/><Strong> Name: </Strong>' + name + '</p>'
+                '<p><img src="icons/house16.png"/><Strong> Name: </Strong>' + name + '</p>'     
                 + '<p><img src="icons/phone16.png"/><Strong> Contact: </Strong>' + contact + '</p>'
                 + '<p><img src="icons/16.png"/><Strong> Address: </Strong>' + '</p>'
                 + '<p>&emsp;' + location + '</p>'
