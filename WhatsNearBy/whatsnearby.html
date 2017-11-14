@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="whatsnearby.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="title">
+            <h2>
+                What's nearby you?
+            </h2>
+        </div>
+        <div id= "category">
+                <select id="category_id" name="Category" property="category_name" onchange="onchange_action();">
+                        <option selected="select">Select your category</option> 
+                        <option value="all">All</option>
+                        <option value="food">Food</option>
+                        <option value="coffee">Coffee</option>
+                        <option value="drinks">Nightlife</option>
+                        <option value="arts">Fun</option>
+                        <option value="shops">Shopping</option>
+                    </select>                
+        </div>
+        <br />
+        <div id="app">
+            <img src="icons/16.png"/> loading with your current location...
+        </div>
+    </div>
+</body> 
+<script type="text/javascript" src="whatsnearby.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</html>
