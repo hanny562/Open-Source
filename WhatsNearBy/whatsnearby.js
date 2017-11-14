@@ -25,8 +25,8 @@ function onchange_action() {
 
 document.getElementById('category_id').onchange = function () {
     var section = onchange_action();
-    latitude = initApp.navigator.geolocation.latitude;
-    longitude = initApp.navigator.geolocation.longitude;
+    latitude = start.navigator.geolocation.latitude;
+    longitude = start.navigator.geolocation.longitude;
     getEndPoint(latitude, longitude, section);
 }
 
