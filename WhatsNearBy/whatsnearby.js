@@ -7,6 +7,8 @@ var longitude = '';
 var latitude = '';
 var version = "20171114"
 
+var render = document.getElementById('view');
+
 function onchange_action(){
     var e = document.getElementById('category_id');
     var section = e.options[e.selectedIndex].value;
