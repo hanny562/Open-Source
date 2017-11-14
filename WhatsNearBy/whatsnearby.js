@@ -9,6 +9,8 @@ var version = "20171114"
 
 var render = document.getElementById('view');
 
+window.onload = start();
+
 function start() {
 
     if (navigator.geolocation) {
@@ -25,15 +27,26 @@ function onchange_action() {
 
 document.getElementById('category_id').onchange = function () {
     var section = onchange_action();
-    latitude = start.navigator.geolocation.latitude;
-    longitude = start.navigator.geolocation.longitude;
-    getEndPoint(latitude, longitude, section);
+    latitude = navigator.geolocation.coords.latitude;
+    longitude = navigator.geolocation.coords.longitude;
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+            load_info(request.responseText);
+        }
+    }
+    request.open('get', getEndPoint(latitude, longitude, section));
+    request.send();
+}
+
+function getEndPoint(lat, long, section) {
+    return "https://api.foursquare.com/v2/venues/explore?ll=" + lat + "," + long + "&section=" + section + "&radius=" + radius + "&client_id=" + client_ID + "&client_secret=" + client_secret + "&v=" + version;
 }
 
 function setCoordinate(position) {
 
-    this_latitude = position.coords.latitude;
-    this_longitude = position.coords.longitude;
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
 
     document.getElementById('category_id').onchange = function () {
         var section = onchange_action();
@@ -44,7 +57,7 @@ function setCoordinate(position) {
                 load_info(request.responseText);
             }
         }
-        request.open('get', getEndPoint(this_latitude, this_longitude, section));
+        request.open('get', getEndPoint(latitude, longitude, section));
         request.send();
     }
 }
@@ -57,15 +70,11 @@ function category_conversion(category) {
     return categories;
 }
 
-function getEndPoint(lat, long, section) {
-    return "https://api.foursquare.com/v2/venues/explore?ll=" + lat + "," + long + "&section=" + section + "&radius=" + radius + "&client_id=" + client_ID + "&client_secret=" + client_secret + "&v=" + version;
-}
-
-function load_info(json) {
+function load_info(response) {
     var obj = JSON.parse(response);
     var view = '<div class="panel panel-default"><div class="panel-body">';
 
-    view += '<p>Looking for :<Strong> ' + onchange_action() + '</Strong></p>'
+    view += '<p>Looking for :<Strong> ' + onchange_action() + '</Strong></p>';
     view += '<p>Your current location :<strong>  ' + obj.response.headerFullLocation + '</strong></p>';
     view += '<p>Within : <strong>  ' + radius / 1000 + 'km</strong></p>';
     view += '<hr />';
