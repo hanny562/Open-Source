@@ -70,3 +70,45 @@
 	width: 116px;
     background: rgb(255, 244, 221);
 }
+
+.keys span.operator {
+    color: rgb(0, 51, 161);
+	float: right;
+	background: #F0F8FF;
+	margin-right: 6px;
+}
+
+.keys span.equal {
+	background: rgba(196, 195, 195, 0.24);
+	color: rgba(0, 0, 0, 0.863);
+}
+
+.top span.clear {
+	background: #ffecee;
+	color: #ff6072;
+}
+
+
+.keys span:hover {
+	background: #e9c9f8;;
+	color: #ffffff;
+}
+
+.keys span.operator:hover{
+	background: #b4eaff;
+}
+
+.keys span.equal:hover {
+	background: #e9c9f8;
+	color: #ffffff;
+}
+
+.top span.clear:hover {
+	background: #ffc8ce;
+	color: #ffffff;
+}
+
+#copybutton:hover{
+    background: #ffef60;
+	color: #ffffff;
+}
