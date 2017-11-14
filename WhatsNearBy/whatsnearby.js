@@ -61,12 +61,38 @@ function getEndPoint(lat, long, section) {
     return "https://api.foursquare.com/v2/venues/explore?ll=" + lat + "," + long + "&section=" + section + "&radius=" + radius + "&client_id=" + client_ID + "&client_secret=" + client_secret + "&v=" + version;
 }
 
-function load_info(json){
+function load_info(json) {
     var obj = JSON.parse(response);
     var view = '<div class="panel panel-default"><div class="panel-body">';
-    
-            view += '<p>Looking for :<Strong> ' + onchange_action() + '</Strong></p>'
-            view += '<p>Your current location :<strong>  ' + obj.response.headerFullLocation + '</strong></p>';
-            view += '<p>Within : <strong>  ' + radius / 1000 + 'km</strong></p>';
-            view += '<hr />';
+
+    view += '<p>Looking for :<Strong> ' + onchange_action() + '</Strong></p>'
+    view += '<p>Your current location :<strong>  ' + obj.response.headerFullLocation + '</strong></p>';
+    view += '<p>Within : <strong>  ' + radius / 1000 + 'km</strong></p>';
+    view += '<hr />';
+
+    for (var i = 0; i < obj.response.groups.length; i++) {
+        var items = obj.response.groups[i].items;
+
+        for (var j = 0; j < items.length; j++) {
+            var venue = items[j].venue;
+
+            var name = venue.name;
+            var contact = venue.contact.formattedPhone;
+            var location = venue.location.formattedAddress;
+            var categories = category_conversion(venue.categories);
+            var rating = venue.rating;
+
+            view +=
+                '<p><img src="icons/house16.png"/><Strong> Name: </Strong>' + name + '</p>'
+                + '<p><img src="icons/phone16.png"/><Strong> Contact: </Strong>' + contact + '</p>'
+                + '<p><img src="icons/16.png"/><Strong> Address: </Strong>' + '</p>'
+                + '<p>&emsp;' + location + '</p>'
+                + '<p><img src="icons/cart16.png"/><Strong> Categories: </Strong>' + categories + '</p>'
+                + '<p><img src="icons/star16.png"/><Strong> Rating: </Strong>' + rating + '</p>'
+                + '<hr />';
+        }
+    }
+
+    view += '</div></div>';
+    render.innerHTML = view;
 }
