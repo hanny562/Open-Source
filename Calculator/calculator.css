@@ -1,0 +1,72 @@
+*{
+	margin: 1;
+	padding: 0;
+	font: bold 14px Arial, Helvetica, sans-serif;
+}
+
+#calculator {
+	width: 243px;
+	height: auto;
+	
+	margin: 7px auto;
+	padding: 7px 7px 6px;
+	
+	background: rgb(255, 255, 255);
+	background: #ffffff;
+}
+
+.top span.clear {
+	float: left;
+}
+
+.top .screen {
+	height: 31px;
+	width: 156px;
+	
+	float: left;	
+	padding: 0 10px;
+	background: rgba(196, 195, 195, 0.24);
+	border-radius: 2px;
+	
+	font-size: 17px;
+    line-height: 35px;
+    color: rgba(0, 0, 0, 0.863);
+	text-align: right;
+	letter-spacing: 1px;
+}
+
+.keys, .top {
+    overflow: hidden;
+}
+
+.keys span, .top span.clear {
+	float: left;
+	position: relative;
+	top: 0;
+	
+	cursor: pointer;
+	
+	width: 54px;
+	height: 31px;
+	
+	background: #e9e9e9c7;
+	border-radius: 3px;
+	
+	margin: 0 7px 10px 0;
+	
+	color: #290000;
+	line-height: 31px;
+	text-align: center;
+	
+	-moz-user-select:none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	
+	transition: all 0.2s ease;
+}
+
+#copybutton{
+    color: #fc5d36;
+	width: 116px;
+    background: rgb(255, 244, 221);
+}
