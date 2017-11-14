@@ -30,6 +30,32 @@ document.getElementById('category_id').onchange = function () {
     getEndPoint(latitude, longitude, section);
 }
 
+function setCoordinate(position) {
+
+    this_latitude = position.coords.latitude;
+    this_longitude = position.coords.longitude;
+
+    document.getElementById('category_id').onchange = function () {
+        var section = onchange_action();
+
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+                load_info(request.responseText);
+            }
+        }
+        request.open('get', getFoursquareExploreEndpoint(this_latitude, this_longitude, section));
+        request.send();
+    }
+}
+
+function category_conversion(category) {
+    var categories = '';
+    for (var i = 0; i < category.length; i++) {
+        categories += category[i].name;
+    }
+    return categories;
+}
 function getEndPoint(lat, long, section) {
     return "https://api.foursquare.com/v2/venues/explore?ll=" + lat + "," + long + "&section=" + section + "&radius=" + radius + "&client_id=" + client_ID + "&client_secret=" + client_secret + "&v=" + version;
 }
