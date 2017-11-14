@@ -56,6 +56,17 @@ function category_conversion(category) {
     }
     return categories;
 }
+
 function getEndPoint(lat, long, section) {
     return "https://api.foursquare.com/v2/venues/explore?ll=" + lat + "," + long + "&section=" + section + "&radius=" + radius + "&client_id=" + client_ID + "&client_secret=" + client_secret + "&v=" + version;
+}
+
+function load_info(json){
+    var obj = JSON.parse(response);
+    var view = '<div class="panel panel-default"><div class="panel-body">';
+    
+            view += '<p>Looking for :<Strong> ' + onchange_action() + '</Strong></p>'
+            view += '<p>Your current location :<strong>  ' + obj.response.headerFullLocation + '</strong></p>';
+            view += '<p>Within : <strong>  ' + radius / 1000 + 'km</strong></p>';
+            view += '<hr />';
 }
