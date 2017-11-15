@@ -104,19 +104,39 @@ function newNote() {
     var nBody = inputBody.value;
     var getItem = browser.storage.local.get(nTitle);
     getItem.then((result) => {
-      var obj = Object.keys(result);
-      if (obj.length < 1 && nTitle !== '' && nBody !== '') {
-        inputTitle.value = '';
-        inputBody.value = '';
-        saveNote(nTitle, nBody);
-      }
+        var obj = Object.keys(result);
+        if (obj.length < 1 && nTitle !== '' && nBody !== '') {
+            inputTitle.value = '';
+            inputBody.value = '';
+            saveNote(nTitle, nBody);
+        }
     });
-  }
+}
 
 function clear_content() {
     while (nContainer.firstChild) {
-      nContainer.removeChild(nContainer.firstChild);
+        nContainer.removeChild(nContainer.firstChild);
     }
     browser.storage.local.clear();
-  }
-  
+}
+
+function saveNote(title, body) {
+    var saveNotes = browser.storage.local.set({ [title]: body });
+    saveNotes.then(() => {
+        displayNote(title, body);
+    });
+}
+
+function notes_update(nDelete, title, body) {
+    var saveNotes = browser.storage.local.set({ [title]: body });
+    saveNotes.then(() => {
+        if (nDelete != title) {
+            var nRemove = browser.storage.local.remove(nDelete);
+            nRemove.then(() => {
+                displayNote(title, body);
+            });
+        } else {
+            displayNote(title, body);
+        }
+    });
+}
