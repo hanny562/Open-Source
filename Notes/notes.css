@@ -83,19 +83,19 @@ p, input, textarea {
 }
 
 .new-note {
-  width: 100%;
+  width: 95%;
   margin-bottom: 5px;
   margin-left: 5px;
 }
 
 input {
-  width: 95%;
+  width: 99%;
   margin-bottom: 2px;
   font-family: 'Inconsolata', serif;;    
 }
 
 textarea {
-  width: 95%;
+  width: 99%;
   margin-bottom: 2px;
   resize: none;
   font-family: 'Inconsolata', serif;
@@ -109,7 +109,6 @@ textarea {
 
 .add {
   float: right;
-  margin-right:24px;
 }
 
 .note {
