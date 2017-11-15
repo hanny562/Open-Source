@@ -1,5 +1,5 @@
 * {
-  box-sizing: 500px;
+  box-sizing: 95%;
 }
 
 html {
@@ -68,9 +68,9 @@ button {
   
 }
 
-
 button:hover {
   color: white;
+  opacity: 1.0;
 }
 
 h2 {
@@ -86,17 +86,16 @@ p, input, textarea {
   width: 100%;
   margin-bottom: 5px;
   margin-left: 5px;
-  margin-right: 5px;
 }
 
 input {
-  width: 100%;
+  width: 95%;
   margin-bottom: 2px;
   font-family: 'Inconsolata', serif;;    
 }
 
 textarea {
-  width: 100%;
+  width: 95%;
   margin-bottom: 2px;
   resize: none;
   font-family: 'Inconsolata', serif;
@@ -110,17 +109,18 @@ textarea {
 
 .add {
   float: right;
+  margin-right:24px;
 }
 
 .note {
   padding: 4px;
+  width: 95%;
   background: white;
   border-radius: 3px;
   margin-bottom: 5px;
   font-family: 'Inconsolata', serif;
   font-size: 10pt;
   padding-left:10px;
-  margin-right: 5px;
   margin-left:5px;
   margin-bottom:6px solid #1392b9
 }
@@ -149,5 +149,5 @@ p {
 
 .title{
   font-family: 'Lato', sans-serif;
-  font-size: 50px;
+  font-size: 40px;
 }
