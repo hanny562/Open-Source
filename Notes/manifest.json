@@ -19,6 +19,6 @@
             "32": "icons/notes.png"
         },
         "default_title": "Notes",
-        "default_popup": "note.html"
+        "default_popup": "notes.html"
     }
 }
