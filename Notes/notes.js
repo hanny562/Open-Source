@@ -67,4 +67,56 @@ function displayNote(title, body) {
 
     nContainer.appendChild(note);
     noteEdit.style.display = 'none';
+
+    nTitle.addEventListener('click', () => {
+        nDisplay.style.display = 'none';
+        noteEdit.style.display = 'block';
+    })
+
+    nParagraph.addEventListener('click', () => {
+        nDisplay.style.display = 'none';
+        noteEdit.style.display = 'block';
+    })
+
+    btn_cancel.addEventListener('click', () => {
+        nDisplay.style.display = 'block';
+        noteEdit.style.display = 'none';
+        noteTitleEdit.value = title;
+        noteBodyEdit.value = body;
+    })
+
+    btn_delete.addEventListener('click', (e) => {
+        const deleteClick = e.target;
+        deleteClick.parentNode.parentNode.parentNode.removeChild(deleteClick.parentNode.parentNode);
+        browser.storage.local.remove(title);
+    })
+
+    btn_update.addEventListener('click', () => {
+        if (noteTitleEdit.value !== title || noteBodyEdit.value !== body) {
+            notes_update(title, noteTitleEdit.value, noteBodyEdit.value);
+            note.parentNode.removeChild(note);
+        }
+    });
 }
+
+function newNote() {
+    var nTitle = inputTitle.value;
+    var nBody = inputBody.value;
+    var getItem = browser.storage.local.get(nTitle);
+    getItem.then((result) => {
+      var obj = Object.keys(result);
+      if (obj.length < 1 && nTitle !== '' && nBody !== '') {
+        inputTitle.value = '';
+        inputBody.value = '';
+        saveNote(nTitle, nBody);
+      }
+    });
+  }
+
+function clear_content() {
+    while (nContainer.firstChild) {
+      nContainer.removeChild(nContainer.firstChild);
+    }
+    browser.storage.local.clear();
+  }
+  
