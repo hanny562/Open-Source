@@ -1,5 +1,4 @@
 * {
-  box-sizing: 95%;
 }
 
 html {
@@ -83,19 +82,19 @@ p, input, textarea {
 }
 
 .new-note {
-  width: 95%;
+  width: 99%;
   margin-bottom: 5px;
   margin-left: 5px;
 }
 
 input {
-  width: 99%;
+  width: 95%;
   margin-bottom: 2px;
   font-family: 'Inconsolata', serif;;    
 }
 
 textarea {
-  width: 99%;
+  width: 95%;
   margin-bottom: 2px;
   resize: none;
   font-family: 'Inconsolata', serif;
@@ -109,11 +108,12 @@ textarea {
 
 .add {
   float: right;
+  margin-right:7px;
 }
 
 .note {
   padding: 4px;
-  width: 95%;
+  width: 99%;
   background: white;
   border-radius: 3px;
   margin-bottom: 5px;
